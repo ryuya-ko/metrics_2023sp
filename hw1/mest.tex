@@ -1,0 +1,216 @@
+\documentclass[11pt]{article}
+
+% Language & Input
+\usepackage[english]{babel} % Language: English
+% \usepackage[ansinew]{inputenc} % Input
+% Font
+\usepackage[T1]{fontenc} % Font encoding
+\usepackage{lmodern,microtype} % Typeface
+% Style
+\usepackage{titlesec,titling} % Section titles
+\usepackage[nohead]{geometry} % Page & margins
+\usepackage{setspace} % Spacing
+\usepackage{enumitem,booktabs} % Tables & lists
+% Figure
+\usepackage{subcaption}
+% \usepackage{authblk} % author affiliation
+
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[]{caption}
+\usepackage{bm}
+\usepackage{url,color,ascmac}
+\usepackage{xcolor}
+\usepackage[]{physics}
+\usepackage[]{breqn}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Style & Structure
+% Page, spacing & lists
+\geometry{left=20mm,right=20mm,top=30mm,bottom=30mm}
+\setstretch{1.15}
+\setenumerate{label=\small(\roman*)}
+% font for figure note
+\newcommand\fnote[1]{\captionsetup{font=small}\caption*{#1}}
+
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{5}
+
+\usepackage[hidelinks]{hyperref} % If you want your in-text citations to be links
+
+% A bunch of definitions that make my life easier
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\mF}{\mathcal{F}}
+\newcommand{\mG}{\mathcal{G}}
+\newcommand{\mA}{\mathcal{A}}
+\newcommand{\mB}{\mathcal{B}}
+\newcommand{\mC}{\mathcal{C}}
+\newcommand{\mD}{\mathcal{D}}
+\newcommand{\mS}{\mathcal{S}}
+\newcommand{\mP}{\mathcal{P}}
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\hat}{\widehat}
+\renewcommand{\tilde}{\widetilde}
+\newcommand{\matlab}{{\sc Matlab}}
+\newcommand{\ihat}{\hat{\textbf{\i}}}
+\newcommand{\jhat}{\hat{\textbf{\j}}}
+\newcommand{\khat}{\hat{\textbf{k}}}
+\newcommand{\minor}{{\rm minor}}
+% \newcommand{\trace}{{\rm trace}}
+\newcommand{\spn}{{\rm Span}}
+\newcommand{\rem}{{\rm rem}}
+\newcommand{\ran}{{\rm range}}
+\newcommand{\range}{{\rm range}}
+\newcommand{\mdiv}{{\rm div}}
+\newcommand{\proj}{{\rm proj}}
+\newcommand{\Image}{{\rm{Im}}}
+\newcommand{\argmax}{\mathop{\rm arg~max}\limits}
+\newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+\newcommand{\pto}{\overset{p}\rightarrow}
+\newcommand{\dlim}{\overset{d}\rightarrow}
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem*{definition}{Definition}
+\newtheorem*{example}{Example}
+\newtheorem*{note}{Note}
+\newtheorem{exercise}{Exercise}
+
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Card}{Card}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Log}{Log}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\plim}{plim}
+\begin{document}
+
+\title{Econometrics II HW1} % chktex 13
+\date{\today}
+
+\maketitle
+
+\pagebreak
+
+\section*{2}
+\subsection*{a}
+
+Fix any $\varepsilon > 0$. Let $F_N$ denote the distribution function of $\sqrt{N} (\hat{\theta}_N - \theta_0)$.
+
+\begin{align*}
+    \Pr( \lVert \hat{\theta}_N - \theta_0 \rVert \geq \varepsilon)
+    &= \Pr( \sqrt{N} \lVert \hat{\theta}_N - \theta_0 \rVert \geq \sqrt{N} \varepsilon) \\
+    &= \Pr( \sqrt{N} (\hat{\theta}_N - \theta_0) \leq - \sqrt{N} \varepsilon) +
+    \Pr ( \sqrt{N} (\hat{\theta}_N - \theta_0 )\geq  \sqrt{N} \varepsilon) \\
+    &= F_N(- \sqrt{N} \varepsilon) + 1 - F_N(\sqrt{N} \varepsilon)
+\end{align*}
+
+From the assumption of asymptotic normality of $\hat{\theta}_N$, we obtain that $F_N(- \sqrt{N} \varepsilon) \to \Phi(- \infty) = 0$ and $F_N(\sqrt{N} \varepsilon) \to \Phi(\infty) = 1$ as $N \to \infty$, which implies
+
+\begin{align*}
+    \Pr( \lVert \hat{\theta}_N - \theta_0 \rVert \geq \varepsilon) \to 0.
+\end{align*}
+
+Hence, $\hat{\theta}_N \pto \theta_0$.
+
+\subsection*{b}
+
+\begin{itemize}
+    \item blank: $g(N) \to \infty$ as $N\to \infty$.
+\end{itemize}
+
+\begin{proof}
+    Fix any $\varepsilon > 0$. Let $F_N$ and $F$ denote the distribution functions of $g(N) (\hat{\theta}_N - \theta_0)$ and $Z$. Then, we have
+
+    \begin{align*}
+    \Pr( \lVert \hat{\theta}_N - \theta_0 \rVert \geq \varepsilon)
+    &= \Pr( g(N) \lVert \hat{\theta}_N - \theta_0 \rVert \geq g(N) \varepsilon) \\
+    &= \Pr( g(N) (\hat{\theta}_N - \theta_0) \leq - g(N) \varepsilon) +
+    \Pr ( g(N) (\hat{\theta}_N - \theta_0 )\geq  g(N) \varepsilon) \\
+    &= F_N(-g(N) \varepsilon) + 1 - F_N(g(N) \varepsilon) \\
+    &\to F(-\infty) + 1 - F(\infty) \\
+    &= 0 + 1 - 1 = 0
+    \end{align*}
+
+    Hence, $\hat{\theta}_N$ is a consistent estimator of $\theta_0$.
+\end{proof}
+
+\pagebreak
+\section*{5}
+\subsection*{a}
+
+The problem is
+
+\begin{align*}
+    \max_{\sigma \in (0, \infty)}& \quad \frac{1}{n} \sum_{i=1}^{n} \log\left( \frac{1}{2\sigma} \exp(- \frac{\lvert y_i\rvert}{\sigma})\right)
+\end{align*}
+
+where $n$ represents the number of observations.
+% Let $\hat{Q}_n$ denote the objective function.
+
+\subsection*{b}
+
+Assuming the existence of the solution, we obtain the first-order condition to the maximization problem.
+
+
+\begin{align*}
+    - \frac{1}{\hat{\sigma}} - \frac{1}{n} \frac{\sum_{i=0}^{n} \lvert y_i \rvert}{\hat{\sigma}} &= 0
+\end{align*}
+
+where $\hat{\sigma}$ is a maximizer to the problem. Then, we obtain
+
+\begin{align*}
+    \hat{\sigma} &= \frac{1}{n} \sum_{i=0}^{n} \lvert y_i \rvert
+\end{align*}
+
+\subsection*{c}
+
+Since $\lVert Y \rVert \geq 0$, we have $\Pr(Z \geq t) = 0$ for any $t < 0$. For $t \geq 0$, we have
+
+\begin{align*}
+    \Pr(Z \leq t)
+    &= \Pr(\lVert Y \rVert \leq t) \\
+    &= \Pr(-t \leq Y \leq t) \\
+    &= \Pr( Y \leq t) - \Pr(Y < - t) \\
+    &= 1 - \frac{1}{2}\exp(- \frac{t}{\sigma}) - \frac{1}{2} \exp( - \frac{t}{\sigma}) \\
+    &= 1 - \exp(\frac{t}{\sigma})
+\end{align*}
+
+\subsection*{d}
+
+Assuming the i.i.d. sampling process, $\{Z_i\}_{i=1}^n$  is an i.i.d. sample. Since $\hat{\sigma}_N$ is the sample average of $Z_i$ and $E[Z_i^2] < \infty$ exists, we can apply Weak Law of Large Number to obtain $\hat{\sigma}_N \pto \E[Z_i] = \sigma$.
+
+\subsection*{e}
+
+We have
+
+\begin{align*}
+    \E[\hat{\sigma}_N]
+    &= \frac{1}{n} \sum_{i=1}^{n}\E[Z_i] \\
+    &= \frac{1}{n} \sum_{i=1}^{n} \sigma = \sigma
+\end{align*}
+
+Hence, $\hat{\sigma}_N$ is unbiased.
+
+\subsection*{f}
+
+Let $g$ denote the function such that $g(x) = \sqrt{x/2}$. Then, we can construct a consistent estimator of $\sigma$ as
+
+\begin{align*}
+    \tilde{\sigma}_N = g(\frac{1}{n} \sum_{i=1}^{n}y_i^2).
+\end{align*}
+
+Since $\E[Y_i^4] < \infty$ exists, by Weak Law of Large number, we obtain $ 1/n\sum_{i=1}^{n} y_i^2 \pto 2 \sigma^2$. Since $g$ is continuous, by the continuou mapping theorem, we have
+
+\begin{align*}
+    g( \frac{1}{n} \sum_{i=1}^{n} y_i^2) \pto g(2\sigma^2) = \sigma
+\end{align*}
+
+\end{document}
