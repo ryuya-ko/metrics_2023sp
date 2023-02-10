@@ -16,6 +16,73 @@
 
 \section*{2}
 \section*{3}
+
+
+
 \section*{4}
+
+We assume $U$ to be a continuous random variable.
+
+\subsection{a}\label{q:4_a}
+
+Notice that
+
+\begin{align*}
+    \Pr(U \leq a \mid X = x)
+\end{align*}
+
+Take any vector $x\in \R^k$ such that $x\beta > 0$. Then, we have
+
+\begin{align*}
+    \Pr(Y = 1 \mid X = x)
+    &= \Pr(x\beta + U \geq 0) \\
+    &= \Pr(U \geq - x\beta) \\
+    &= 1 - \Pr(U < - x\beta)
+\end{align*}
+
+Since $x\beta > 0$, $\Pr(- x\beta \leq U \leq 0) > 0$. Hence, we obtain
+
+\begin{align*}
+    \Pr(Y = 1 \mid X = x)
+    &= 1 - \Pr(U < - x\beta \mid X = x) \\
+    &= 1 - \left( \Pr(U \leq 0 \mid X = x) - \Pr(- x\beta \leq U \leq 0) \right) \\
+    &= 1 - \left( \frac{1}{2} - \Pr(- x\beta \leq U \leq 0) \right) \\
+    &> 1 - \frac{1}{2} = \frac{1}{2}
+\end{align*}
+
+A similar argument holds for in the case of $x\beta < 0$, which establishes the desired result.
+
+\subsection{b}\label{q:4_b}
+
+Notice that $B \equiv \{b_{(-1)}\}$ is a nonempty, closed, and convex set. Since $c_{(-1)} \notin B$, by Separating hyperplane theorem, we obtain the existence of some vector $p \in \R^{k-1}\setminus \{0\}$ such that
+
+\begin{align*}
+    p \cdot b_{(-1)} < p \cdot c_{(-1)}
+\end{align*}
+
+Let $x_1$ be a scalor: $x_1 = - p \cdot b_{(-1)} - 1/2 (p\cdot c_{(-1)} - p \cdot b_{(-1)})$. Then, we obtain
+
+\begin{align*}
+    x_1 + p \cdot b_{(-1)} < 0 < x_1 + p \cdot c_{(-1)}
+\end{align*}
+
+By constructing $x = (x_1, p^\prime)^\prime \in \R^k$, we obtain the desired result.
+
+\subsection{c}
+
+Under the two different specification $b$ and $c$, the result of part~\ref{q:4_b} implies that there exists an observation $x \in \R^k$ such that
+
+\begin{align*}
+    xb < 0 < xc
+\end{align*}
+
+For such observation, the result of part~\ref{4_a} implies
+
+\begin{align*}
+    \Pr(Y = 1 \mid X = x, \beta = b) &< \frac{1}{2} \\
+    \Pr(Y = 1 \mid X = x, \beta = c) &> \frac{1}{2}
+\end{align*}
+
+Hence, the distribution of $Y$ can be different between the two specification.
 
 \end{document}
