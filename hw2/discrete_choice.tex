@@ -14,18 +14,118 @@
 
 \section*{1}
 
-The answer is $1 + 1 = 2$
+\subsection*{a}
+
+The marginal effect of $x_k$ is
+
+\begin{align*}
+    \begin{cases}{}
+        \beta_k & \text{LPM} \\
+        \beta_k \phi(x\beta) & \text{probit} \\
+        \beta_k \frac{G(x\beta)}{1 + e^{x\beta}} & \text{logit}
+    \end{cases}
+\end{align*}
+
+\subsection*{b}
+\subsubsection*{i and ii}
+
+For probit model, the problem is written as
+
+\begin{align*}
+    \max_{x}&  \mid \beta_k \phi(x\beta) \mid
+\end{align*}
+
+Since $\phi > 0$ and $\phi(0)$ is the maximum value of the normal density, we have a solution $x^*$ such that $x^* \beta = 0$\footnote{We presume $\beta_k \neq 0$ to avoid a trivial argument.}. This yields the maximum value of the marginal effect as $\mid \beta_k \mid \phi(0) = \mid \beta_k \mid \frac{1}{\sqrt{2\pi}}$.
+
+For logit model, the problem is written as
+
+\begin{align*}
+    \max_{x}&  \mid \beta_k \mid\frac{G(x\beta)}{1 + e^{x\beta}}
+    = \mid \beta_k \mid \max_{x} \frac{G(x\beta)}{1 + e^{x\beta}}
+\end{align*}
+
+The solution $x^*$ satisfies the first-order condition
+
+\begin{align*}
+    0 &= \frac{\partial G(x\beta) / (1 + e^{x\beta})}{\partial x}
+\end{align*}
+
+which implies $e^{x^*\beta} = 1$, i.e., $x^*\beta = 0$.
+
+This yields the maximum value of the marginal effect as $\mid \beta_k \mid /4$.
+
+
+
+\subsubsection*{iii}
+
+The marginal effect of $x_k$ at $x = 0$ is $\beta_k \phi(0) = \beta_k \frac{1}{\sqrt{2\pi}}$ and $\beta_k / 4$ under probit and logit model, respectively. The former can be approximated as $0.398 \beta_k$.
+
+
+\subsection*{c}
+\subsubsection*{i}
+
+Since the marginal effect of $x_k$ in LPM is always $\beta_k$, the setting implies
+
+\begin{align*}
+    \beta_{LPM} = 0.398 \beta_{probit}
+\end{align*}
+
+\subsubsection*{ii}
+
+\begin{align*}
+    4 \beta_{LPM} = \beta_{logit}
+\end{align*}
+
+\subsubsection*{iii}
+
+From the previous observation, we obtain
+
+\begin{align*}
+    \beta_{probit} = \frac{1}{2 \cdot 0.398}\beta_{logit}
+\end{align*}
+
 
 \section*{2}
 \section*{3}
 
+\subsection*{b}
 
+\subsubsection*{ii A}
+
+Notice that
+
+\begin{align*}
+    \bar{x}^\prime \beta &= -1.114 \\
+    \bar{x}^\prime \beta + \beta_{\text{mothereduc}}&= -1.259
+\end{align*}
+
+Hence, the efect of one additional year of mother's education is
+
+\begin{align*}
+    G(-1.259) - G(-1.114)  = \Phi(-1.259) - \Phi(-1.114) = - 0.029
+\end{align*}
+
+\subsubsection*{ii B}
+
+The marginal effect measured by the standard formula is
+
+\begin{align*}
+    \phi(-1.114) \beta_{\text{mothereduc}} = -0.031
+\e                                                       │  8    Changed files, or newly in use since previous run(s):
+   99     \bar{x}^\prime \beta + \beta_{\text{mothereduc}}&= -1.259                                                      │  9   /Users/ryuya/econ/metrics_2023sp/hw2/discrete_choice.tex
+  100 \end{align*}                                                                                                       │ 10 Rule 'lualatex': The following rules & subrules became out-of-date:
+  101                                                                                                                    │ 11   lualatex
+  102 Hence, the efect of one additional year of mothnd{align*}
+
+\subsubsection*{iv}
+
+The estiamted marginal effect under liner probability model, probit model, and logit model is $-0.029, -0.031$, and $-0.029$. Those are pretty close.
 
 \section*{4}
 
 We assume $U$ to be a continuous random variable.
 
-\subsection{a}\label{q:4_a}
+\subsection*{a}\label{q:4_a}
 
 Notice that
 
@@ -54,7 +154,7 @@ Since $x\beta > 0$, $\Pr(- x\beta \leq U \leq 0) > 0$. Hence, we obtain
 
 A similar argument holds for in the case of $x\beta < 0$, which establishes the desired result.
 
-\subsection{b}\label{q:4_b}
+\subsection*{b}\label{q:4_b}
 
 Notice that $B \equiv \{b_{(-1)}\}$ is a nonempty, closed, and convex set. Since $c_{(-1)} \notin B$, by Separating hyperplane theorem, we obtain the existence of some vector $p \in \R^{k-1}\setminus \{0\}$ such that
 
@@ -70,7 +170,7 @@ Let $x_1$ be a scalor: $x_1 = - p \cdot b_{(-1)} - 1/2 (p\cdot c_{(-1)} - p \cdo
 
 By constructing $x = (x_1, p^\prime)^\prime \in \R^k$, we obtain the desired result.
 
-\subsection{c}
+\subsection*{c}
 
 Under the two different specification $b$ and $c$, the result of part~\ref{q:4_b} implies that there exists an observation $x \in \R^k$ such that
 
