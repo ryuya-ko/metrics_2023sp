@@ -26,6 +26,43 @@
 \section*{2}
 \subsection*{a}
 
+Notice that
+
+\begin{align*}
+    \hat{\beta}_{FD}
+    &= \left( \sum_{i=i}^{N} (x_{i2} - x_{i1})^\prime (x_{i2} - x_{i1}) \right)^{-1} \left( \sum_{i=1}^{N} (x_{i2} - x_{i1}) (y_{i2} - y_{i1}) \right) \\
+    \hat{\beta}_{FE}
+    &= \left( \sum_{t=1}^{2}\sum_{i=i}^{N} (x_{it} - \bar{x}_{i})^\prime (x_{i2} - \bar{x}_{i}) \right)^{-1} \left( \sum_{t=1}^{2}\sum_{i=1}^{N} (x_{it} - \bar{x}_i) (y_{it} - \bar{y}_{i}) \right) \\
+    x_{it} - \bar{x}_i
+    &= \begin{cases}{}
+        x_{i2} - \frac{x_{i1} + x_{i2}}{2} = \frac{x_{i2} - x_{i1}}{2} & t = 2\\
+        x_{i1} - \frac{x_{i1} + x_{i2}}{2} = - \frac{x_{i2} - x_{i1}}{2} & t = 1
+    \end{cases} \\
+    y_{it} - \bar{x}_i
+    &= \begin{cases}{}
+        y_{i2} - \frac{y_{i1} + y_{i2}}{2} = \frac{y_{i2} - y_{i1}}{2} & t = 2\\
+        y_{i1} - \frac{y_{i1} + y_{i2}}{2} = - \frac{y_{i2} - y_{i1}}{2} & t = 1
+    \end{cases}
+\end{align*}
+
+Hence, we have
+
+\begin{align*}
+    \sum_{t=1}^{2}\sum_{i=i}^{N} (x_{it} - \bar{x}_{i})^\prime (x_{i2} - \bar{x}_{i})
+    &= \frac{1}{2} \sum_{i=1}^{N} (x_{i2} - x_{i1})^\prime (x_{i2} - x_{i1}) \\
+    \sum_{t=1}^{2}\sum_{i=i}^{N} (y_{it} - \bar{y}_{i})^\prime (x_{i2} - \bar{x}_{i})
+    &= \frac{1}{2} \sum_{i=1}^{N} (y_{i2} - y_{i1})^\prime (x_{i2} - x_{i1})
+\end{align*}
+
+Therefore, we can rewrite the expression of $\hat{\beta}_{FE}$ as
+
+\begin{align*}
+    \hat{\beta}_{FE}
+    &= \left( \sum_{t=1}^{2}\sum_{i=i}^{N} (x_{it} - \bar{x}_{i})^\prime (x_{i2} - \bar{x}_{i}) \right)^{-1} \left( \sum_{t=1}^{2}\sum_{i=1}^{N} (x_{it} - \bar{x}_i) (y_{it} - \bar{y}_{i}) \right) \\
+    &= \left( \frac{1}{2} \sum_{i=i}^{N} (x_{i2} - x_{i1})^\prime (x_{i2} - x_{i1}) \right)^{-1} \left( \frac{1}{2} \sum_{i=1}^{N} (x_{i2} - x_{i1}) (y_{i2} - y_{i1}) \right) \\
+    &= \hat{\beta}_{FD}
+\end{align*}
+
 
 \section*{3}
 \subsection*{a}
@@ -34,7 +71,7 @@ $d2_t$ always takes value $1$ if $t = 2$ and $0$ otherwise for all $i$. $prog_{i
 
 \subsection*{b}
 
-Since we may have $\E[u_{it} \;\mid \; prog_{it}] = a \neq 0$, including $c_i$ is essential to avoid omitted variable bias.
+Since we may have $\E[u_{it} \mid prog_{it}] = a \neq 0$, including $c_i$ is essential to avoid omitted variable bias.
 
 \subsection*{c}
 
