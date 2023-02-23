@@ -1,0 +1,179 @@
+\documentclass[11pt]{article}
+
+% Language & Input
+\usepackage[english]{babel} % Language: English
+% \usepackage[ansinew]{inputenc} % Input
+% Font
+\usepackage[T1]{fontenc} % Font encoding
+\usepackage{lmodern,microtype} % Typeface
+% Style
+\usepackage{titlesec,titling} % Section titles
+\usepackage[nohead]{geometry} % Page & margins
+\usepackage{setspace} % Spacing
+\usepackage{enumitem,booktabs} % Tables & lists
+% Figure
+\usepackage{subcaption}
+% title
+\usepackage{authblk} % author affiliation
+
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[]{caption}
+\usepackage{bm}
+\usepackage{url,color,ascmac}
+\usepackage{xcolor}
+\usepackage[]{physics}
+\usepackage[]{breqn}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Style & Structure
+% Page, spacing & lists
+\geometry{left=20mm,right=20mm,top=30mm,bottom=30mm}
+\setstretch{1.15}
+\setenumerate{label=\small(\roman*)}
+% font for figure note
+\newcommand\fnote[1]{\captionsetup{font=small}\caption*{#1}}
+
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{5}
+
+\usepackage[hidelinks]{hyperref} % If you want your in-text citations to be links
+
+% A bunch of definitions that make my life easier
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\mF}{\mathcal{F}}
+\newcommand{\mG}{\mathcal{G}}
+\newcommand{\mA}{\mathcal{A}}
+\newcommand{\mB}{\mathcal{B}}
+\newcommand{\mC}{\mathcal{C}}
+\newcommand{\mD}{\mathcal{D}}
+\newcommand{\mS}{\mathcal{S}}
+\newcommand{\mP}{\mathcal{P}}
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\hat}{\widehat}
+\renewcommand{\tilde}{\widetilde}
+\newcommand{\matlab}{{\sc Matlab}}
+\newcommand{\ihat}{\hat{\textbf{\i}}}
+\newcommand{\jhat}{\hat{\textbf{\j}}}
+\newcommand{\khat}{\hat{\textbf{k}}}
+\newcommand{\minor}{{\rm minor}}
+% \newcommand{\trace}{{\rm trace}}
+\newcommand{\spn}{{\rm Span}}
+\newcommand{\rem}{{\rm rem}}
+\newcommand{\ran}{{\rm range}}
+\newcommand{\range}{{\rm range}}
+\newcommand{\mdiv}{{\rm div}}
+\newcommand{\proj}{{\rm proj}}
+\newcommand{\Image}{{\rm{Im}}}
+\newcommand{\argmax}{\mathop{\rm arg~max}\limits}
+\newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+\newcommand{\pto}{\overset{p}\rightarrow}
+\newcommand{\dlim}{\overset{d}\rightarrow}
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem*{definition}{Definition}
+\newtheorem*{example}{Example}
+\newtheorem*{note}{Note}
+\newtheorem{exercise}{Exercise}
+
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Card}{Card}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Log}{Log}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\plim}{plim}
+\begin{document}
+
+\title{Econometrics II HW3} % chktex 13
+\author[1]{Harshit Kapur}
+\author[2]{Ryuya Ko}
+\affil[1]{UT Eid:}
+\affil[2]{UT Eid: gl23453}
+\date{\today}
+
+\maketitle
+
+\pagebreak
+
+\section*{1}
+
+\subsection*{a}
+
+\subsection*{b}
+
+\subsection*{c}
+\section*{2}
+\subsection*{a}
+
+
+\section*{3}
+\subsection*{a}
+
+$d2_t$ always takes value $1$ if $t = 2$ and $0$ otherwise for all $i$. $prog_{it}$ takes value $1$ if $t = 2$ and the individual $i$ receives the program and $0$ otherwise. Two variables are correlated. Thus, if we exclude $d2_t$, the estimator of $\delta_1$ suffers from the omitted variable bias.
+
+\subsection*{b}
+
+Since we may have $\E[u_{it} \;\mid \; prog_{it}] = a \neq 0$, including $c_i$ is essential to avoid omitted variable bias.
+
+\subsection*{c}
+
+Notice that the first differencing method yields
+
+\begin{align*}
+    \Delta y_i = \theta_2 + \delta_1 prog_{i} + u_{i2} - u_{i1}
+\end{align*}
+
+where $prog_{i}$ take value $1$ if the individual $i$ receives the treatment and $0$ otherwise. The estimator is obtained by OLS procedure, which gives us the following expression.
+
+\begin{align*}
+    \hat{\delta}_1 &= \frac{\sum_{i=1}^{N} (prog_i - \bar{prog}) (\Delta y_i - \bar{\Delta y})}{\sum_{i=1}^{N} (prog_i - \bar{prog})^2} \\
+    \hat{\theta}_2 &= \bar{\Delta y} - \hat{\delta}_1 \bar{prog}
+\end{align*}
+
+By construction, we have $\bar{prog} = N_T/N$ where $N_T$ is the number of individual who get the treatment. We have
+
+\begin{align*}
+    \sum_{i=1}^{N} (prog_i - \bar{prog})^2
+    &= \sum_{i=1}^{N} prog_i^2 - N \bar{prog}^2 \\
+    &= N_T (1 - \frac{N_T}{N}) \\
+    \sum_{i=1}^{N} (prog_i - \bar{prog}) (\Delta y_i - \bar{\Delta y})
+    &= \sum_{i=1}^{N} prog_i \Delta y_i - N \bar{prog} \bar{\Delta y} \\
+    &= N_T \bar{\Delta y}_{treat} - N_T \left( \frac{N_T}{N} \bar{\Delta y}_{treat} + \frac{N - N_T}{N} \bar{\Delta y}_{control} \right) \\
+    &= N_T \left( 1 - \frac{N_T}{N} \right) (\bar{\Delta y}_{treat} - \bar{\Delta y}_{control})
+\end{align*}
+
+Hence, we obtain $\hat{\delta}_1 = \bar{\Delta y}_{treat} - \bar{\Delta y}_{control}$. By substituting this expression, we also get
+
+\begin{align*}
+    \hat{\theta}_2
+    &= \bar{\Delta y} - \hat{\delta}_1 \bar{prog} \\
+    &= \frac{N_T}{N} \bar{\Delta y}_{treat} + \frac{N - N_T}{N} \bar{\Delta y}_{control} - \frac{N_T}{N} (\bar{\Delta y}_{treat} - \bar{\Delta y}_{control}) \\
+    &= \bar{\Delta y}_{control}
+\end{align*}
+
+\section*{4}
+
+\subsection*{d}
+
+The OLS estimator suffers the omitted variable bias since it excludes the regressor representing the individual effect $c_i$. $c_i$ and $exec_{it}$ is highly likely to be correlated: in the state with more murderers, the number od executions increase. Hence, the OLS estimator of $\beta_1$ exhibits upward bias due to the correlation.
+
+\subsection*{e}
+
+The strict exogeneity require
+
+\begin{align*}
+    \E[u_{it} \mid exec_{is}, c_i] = 0
+\end{align*}
+
+for any $t, s$. That is, for example, the past history of execution cannot affect the future murder rate beyond the state-level fixed effects.
+
+\end{document}
